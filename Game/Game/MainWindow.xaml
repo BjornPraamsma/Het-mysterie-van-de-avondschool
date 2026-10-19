@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="MainWindow" Height="450" Width="800"
+        KeyDown="OnKeyDown" KeyUp="OnKeyUp">
+    <Canvas x:Name="GameCanvas" Background="#333333" Focusable="True">
+        <!-- The player sprite -->
+        <Image x:Name="Player" Width="32" Height="32" Canvas.Left="100" Canvas.Top="100"/>
+    </Canvas>
 </Window>
