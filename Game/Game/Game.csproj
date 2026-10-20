@@ -9,13 +9,81 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Character.png" />
+    <None Remove="Assets\blonde_man\IdleBackBotBlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleBackMidBlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleBackTop1BlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleBackTopBlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleFrontBotBlondeMan.png" />
+    <None Remove="Assets\blonde_man\IdleFrontMidBlondeMan.png" />
+    <None Remove="Assets\blonde_man\IdleFrontTop1BlondeMan.png" />
+    <None Remove="Assets\blonde_man\IdleFrontTop2BlondeMan.png" />
+    <None Remove="Assets\blonde_man\IdleLeftBot1BlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleLeftBot2BlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleLeftTop1BlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleLeftTop2BlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleRightBot1BlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleRightBot2BlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleRightTop1BlondMan.png" />
+    <None Remove="Assets\blonde_man\IdleRightTop2BlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkBackStand1BlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkBackStand2BlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkBackStrideLeftBlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkBackStrideRightBlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkFrontStand1BlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkFrontStand2BlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkFrontStrideLeftBlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkFrontStrideRightBlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkLeftStand1BlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkLeftStandBlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkLeftStrideLeftBlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkLeftStrideRightBlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkRightStand1BlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkRightStand2BlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkRightStrideLeftBlondMan.png" />
+    <None Remove="Assets\blonde_man\WalkRightStrideRightBlondMan.png" />
     <None Remove="Assets\tile_0000.png" />
     <None Remove="Assets\tile_0001.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Character.png" />
+    <Resource Include="Assets\blonde_man\IdleFrontMidBlondeMan.png" />
+    <Resource Include="Assets\blonde_man\IdleFrontTop1BlondeMan.png" />
+    <Resource Include="Assets\blonde_man\IdleFrontTop2BlondeMan.png" />
+    <Resource Include="Assets\blonde_man\IdleLeftBot1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleLeftBot2BlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleLeftTop1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleLeftTop2BlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleRightBot1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleRightBot2BlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleRightTop1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleRightTop2BlondMan.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\blonde_man\WalkBackStand1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkBackStand2BlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkBackStrideLeftBlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkBackStrideRightBlondMan.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\blonde_man\IdleBackBotBlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleBackMidBlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleBackTop1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleBackTopBlondMan.png" />
+    <Resource Include="Assets\blonde_man\IdleFrontBotBlondeMan.png" />
+    <Resource Include="Assets\blonde_man\WalkFrontStand1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkFrontStand2BlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkFrontStrideLeftBlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkFrontStrideRightBlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkLeftStand1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkLeftStandBlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkLeftStrideLeftBlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkLeftStrideRightBlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkRightStand1BlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkRightStand2BlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkRightStrideLeftBlondMan.png" />
+    <Resource Include="Assets\blonde_man\WalkRightStrideRightBlondMan.png" />
     <Resource Include="Assets\tile_0000.png" />
     <Resource Include="Assets\tile_0001.png" />
   </ItemGroup>
