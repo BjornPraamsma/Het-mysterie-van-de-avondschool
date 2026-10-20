@@ -24,6 +24,7 @@ namespace Game
 
         private bool _isMoving;
         private bool _moveUp, _moveDown, _moveLeft, _moveRight;
+        private bool _isGameStarted = false; // Toegevoegd om te controleren of we in het menu zijn
 
         private int _animationFrame;
         private DateTime _lastAnimTime = DateTime.Now;
@@ -45,6 +46,33 @@ namespace Game
             CompositionTarget.Rendering += OnRenderFrame;
         }
 
+        // ==========================================
+        // START MENU FUNCTIES
+        // ==========================================
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Verberg het start menu
+            StartMenuOverlay.Visibility = Visibility.Collapsed;
+
+            // Laat de game canvas (in de ScrollViewer) zien
+            GameScrollViewer.Visibility = Visibility.Visible;
+
+            // Zorg dat de canvas direct focus krijgt zodat KeyDown events werken
+            GameCanvas.Focus();
+
+            _isGameStarted = true;
+        }
+
+        private void Afsluiten_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        // ==========================================
+        // GAME FUNCTIES
+        // ==========================================
+
         private void InitializePlayer()
         {
             _playerImage.Width = GameConfig.TileSize;
@@ -58,7 +86,8 @@ namespace Game
 
         private void OnRenderFrame(object? sender, EventArgs e)
         {
-            if (_quizManager.IsQuizActive) return;
+            // Stop rendering als het spel nog niet is gestart of als er een quiz bezig is
+            if (!_isGameStarted || _quizManager.IsQuizActive) return;
 
             UpdateMovement();
             UpdateAnimation();
@@ -74,8 +103,6 @@ namespace Game
         {
             double nextX = _playerX;
             double nextY = _playerY;
-
-
 
             _isMoving = _moveUp || _moveDown || _moveLeft || _moveRight;
 
@@ -103,6 +130,7 @@ namespace Game
         private void SubmitAnswer_Click(object sender, RoutedEventArgs e)
         {
             _quizManager.SubmitAnswer(_currentMap, () => _mapRenderer.Render(_currentMap, _playerImage));
+            GameCanvas.Focus(); // Herstel focus na sluiten quiz
         }
 
         private void QuizAnswerInput_KeyDown(object sender, KeyEventArgs e)
@@ -110,12 +138,14 @@ namespace Game
             if (e.Key == Key.Enter)
             {
                 _quizManager.SubmitAnswer(_currentMap, () => _mapRenderer.Render(_currentMap, _playerImage));
+                GameCanvas.Focus(); // Herstel focus na sluiten quiz
             }
         }
 
         private void CancelQuiz_Click(object sender, RoutedEventArgs e)
         {
             _quizManager.CloseQuiz();
+            GameCanvas.Focus(); // Herstel focus na sluiten quiz
         }
 
         private void UpdateAnimation()
@@ -142,7 +172,7 @@ namespace Game
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_quizManager.IsQuizActive) return;
+            if (!_isGameStarted || _quizManager.IsQuizActive) return;
             SetMovementState(e.Key, true);
         }
 
