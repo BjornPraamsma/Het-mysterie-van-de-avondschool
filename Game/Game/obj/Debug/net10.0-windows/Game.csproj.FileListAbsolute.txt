@@ -6,7 +6,6 @@ C:\Users\maxho\source\repos\Het-mysterie-van-de-avondschool\Game\Game\bin\Debug\
 C:\Users\maxho\source\repos\Het-mysterie-van-de-avondschool\Game\Game\obj\Debug\net10.0-windows\MainWindow.g.cs
 C:\Users\maxho\source\repos\Het-mysterie-van-de-avondschool\Game\Game\obj\Debug\net10.0-windows\App.g.cs
 C:\Users\maxho\source\repos\Het-mysterie-van-de-avondschool\Game\Game\obj\Debug\net10.0-windows\Game_MarkupCompile.cache
-C:\Users\maxho\source\repos\Het-mysterie-van-de-avondschool\Game\Game\obj\Debug\net10.0-windows\Game_MarkupCompile.lref
 C:\Users\maxho\source\repos\Het-mysterie-van-de-avondschool\Game\Game\obj\Debug\net10.0-windows\MainWindow.baml
 C:\Users\maxho\source\repos\Het-mysterie-van-de-avondschool\Game\Game\obj\Debug\net10.0-windows\Game.g.resources
 C:\Users\maxho\source\repos\Het-mysterie-van-de-avondschool\Game\Game\obj\Debug\net10.0-windows\Game.GeneratedMSBuildEditorConfig.editorconfig
