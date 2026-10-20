@@ -4,8 +4,12 @@
         Title="Het Mysterie van de Avondschool" Height="680" Width="1040"
         KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
     <Grid>
+        <ScrollViewer x:Name="GameScrollViewer" 
+                      HorizontalScrollBarVisibility="Hidden" 
+                      VerticalScrollBarVisibility="Hidden" 
+                      Focusable="False">
         <Canvas x:Name="GameCanvas" Background="#1E1E24" Focusable="True" />
-
+        </ScrollViewer>
         <!-- Math Question Dialog Overlay -->
         <Grid x:Name="QuizOverlay" Visibility="Collapsed" Background="#AA000000">
             <Border Background="#2D2D3A" CornerRadius="12" Width="380" Height="230" 

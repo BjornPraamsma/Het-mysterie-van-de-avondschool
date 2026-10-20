@@ -50,6 +50,7 @@
     <None Remove="Assets\RightWall.png" />
     <None Remove="Assets\tile_0000.png" />
     <None Remove="Assets\tile_0001.png" />
+    <None Remove="Assets\Void.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -98,6 +99,7 @@
     <Resource Include="Assets\FrontWall.png" />
     <Resource Include="Assets\LeftWall.png" />
     <Resource Include="Assets\RightWall.png" />
+    <Resource Include="Assets\Void.png" />
   </ItemGroup>
 
   <ItemGroup>

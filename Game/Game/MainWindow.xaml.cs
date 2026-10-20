@@ -62,12 +62,20 @@ namespace Game
 
             UpdateMovement();
             UpdateAnimation();
+
+            double scrollX = _playerX - (GameScrollViewer.ActualWidth / 2) + (GameConfig.TileSize / 2);
+            double scrollY = _playerY - (GameScrollViewer.ActualHeight / 2) + (GameConfig.TileSize / 2);
+
+            GameScrollViewer.ScrollToHorizontalOffset(scrollX);
+            GameScrollViewer.ScrollToVerticalOffset(scrollY);
         }
 
         private void UpdateMovement()
         {
             double nextX = _playerX;
             double nextY = _playerY;
+
+
 
             _isMoving = _moveUp || _moveDown || _moveLeft || _moveRight;
 
