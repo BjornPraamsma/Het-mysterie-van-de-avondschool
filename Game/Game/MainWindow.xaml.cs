@@ -33,7 +33,7 @@ namespace Game
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleFrontBotBlondeMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleFrontMidBlondeMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleFrontTop1BlondeMan.png")),
-                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleFrontTop2BlondeMan.png")),
+                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleFrontTop2BlondeMan.png"))
             };
 
             _animations["Idle_Back"] = new BitmapImage[]
@@ -41,7 +41,7 @@ namespace Game
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleBackBotBlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleBackMidBlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleBackTopBlondMan.png")),
-                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleBackTop1BlondMan.png")),
+                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleBackTop1BlondMan.png"))
             };
 
             _animations["Idle_Left"] = new BitmapImage[]
@@ -49,7 +49,7 @@ namespace Game
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleLeftBot1BlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleLeftBot2BlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleLeftTop1BlondMan.png")),
-                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleLeftTop2BlondMan.png")),
+                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleLeftTop2BlondMan.png"))
             };
 
             _animations["Idle_Right"] = new BitmapImage[]
@@ -57,7 +57,7 @@ namespace Game
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleRightBot1BlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleRightBot2BlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleRightTop1BlondMan.png")),
-                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleRightTop2BlondMan.png")),
+                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/IdleRightTop2BlondMan.png"))
             };
 
             // --- WALK ANIMATIONS ---
@@ -66,7 +66,7 @@ namespace Game
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkFrontStand1BlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkFrontStrideLeftBlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkFrontStand2BlondMan.png")),
-                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkFrontStrideRightBlondMan.png")),
+                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkFrontStrideRightBlondMan.png"))
             };
 
             _animations["Walk_Back"] = new BitmapImage[]
@@ -74,7 +74,7 @@ namespace Game
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkBackStand1BlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkBackStrideLeftBlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkBackStand2BlondMan.png")),
-                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkBackStrideRightBlondMan.png")),
+                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkBackStrideRightBlondMan.png"))
             };
 
             _animations["Walk_Left"] = new BitmapImage[]
@@ -82,7 +82,7 @@ namespace Game
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkLeftStand1BlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkLeftStrideLeftBlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkLeftStandBlondMan.png")),
-                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkLeftStrideRightBlondMan.png")),
+                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkLeftStrideRightBlondMan.png"))
             };
 
             _animations["Walk_Right"] = new BitmapImage[]
@@ -90,7 +90,7 @@ namespace Game
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkRightStand1BlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkRightStrideLeftBlondMan.png")),
                 new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkRightStand2BlondMan.png")),
-                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkRightStrideRightBlondMan.png")),
+                new BitmapImage(new Uri("pack://application:,,,/Assets/blonde_man/WalkRightStrideRightBlondMan.png"))
             };
         }
 
@@ -104,14 +104,23 @@ namespace Game
         }
     }
 
+    // 3. DOOR CLASS: Stores state and visual reference for individual doors
+    public class Door
+    {
+        public int Row { get; set; }
+        public int Column { get; set; }
+        public bool IsOpen { get; set; }
+        public Rectangle Visual { get; set; }
+    }
+
     public partial class MainWindow : Window
     {
-        // 3. CLASS VARIABLES
+        // 4. CLASS VARIABLES
         private DispatcherTimer gameTimer = new DispatcherTimer();
-        private DispatcherTimer animationTimer = new DispatcherTimer(); // NEW: Separate timer just for animation frames
+        private DispatcherTimer animationTimer = new DispatcherTimer();
 
         private bool moveLeft, moveRight, moveUp, moveDown;
-        private double playerSpeed = 5.0;
+        private double playerSpeed = 4.0;
         private const int TileSize = 64;
         private const int DoorTile = 2;
 
@@ -121,69 +130,62 @@ namespace Game
             { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
             { 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1 },
             { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
-            { 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1 },
+            { 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1 },
             { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
             { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
         };
 
-        private readonly int doorRow = 2;
-        private readonly int doorColumn = 5;
-        private bool doorOpen;
-        private Rectangle doorVisual;
+        // Collection to track all dynamic doors present on the map
+        private List<Door> doors = new List<Door>();
         private TextBlock interactionText;
 
-        // NEW: Replaced the slicer variables with SpriteManager and State tracking variables
+        // Sprite and Animation tracking variables
         private SpriteManager spriteManager;
         private CharacterState currentState = CharacterState.Idle;
         private Direction currentDirection = Direction.Front;
         private int currentFrameIndex = 0;
 
-        // 4. THE CONSTRUCTOR
+        // 5. THE CONSTRUCTOR
         public MainWindow()
         {
             InitializeComponent();
 
-            // Initialize our new dictionary-based sprite loader
             spriteManager = new SpriteManager();
 
             LoadAssets();
 
-            // Start the 60 FPS game loop (Handles movement and collisions)
+            // 60 FPS Game Loop (Movement & Collisions)
             gameTimer.Tick += GameLoop;
             gameTimer.Interval = TimeSpan.FromMilliseconds(16);
             gameTimer.Start();
 
-            // Start the Animation loop (~150ms per frame to animate the character)
+            // Animation Loop (~150ms per frame)
             animationTimer.Tick += AnimationLoop;
             animationTimer.Interval = TimeSpan.FromMilliseconds(150);
             animationTimer.Start();
         }
 
-        // 5. ANIMATION LOOP: Only handles advancing the image index, not the physics
+        // 6. ANIMATION LOOP
         private void AnimationLoop(object sender, EventArgs e)
         {
             BitmapImage[] currentFrames = spriteManager.GetAnimationFrames(currentState, currentDirection);
 
             if (currentFrames != null && currentFrames.Length > 0)
             {
-                // Move to the next frame, loop back to 0 if at the end of the array
                 currentFrameIndex = (currentFrameIndex + 1) % currentFrames.Length;
                 Player.Source = currentFrames[currentFrameIndex];
             }
         }
 
-        // Helper method to smoothly transition states instantly (prevents input delay visually)
         private void SetCharacterState(CharacterState newState, Direction newDirection)
         {
-            // Only update if the player actually changed what they are doing
             if (currentState != newState || currentDirection != newDirection)
             {
                 currentState = newState;
                 currentDirection = newDirection;
-                currentFrameIndex = 0; // Reset animation to the beginning
+                currentFrameIndex = 0;
 
-                // Instantly show the first frame of the new state
                 BitmapImage[] frames = spriteManager.GetAnimationFrames(currentState, currentDirection);
                 if (frames != null && frames.Length > 0)
                 {
@@ -192,17 +194,16 @@ namespace Game
             }
         }
 
-        // 6. LEVEL BUILDER: Loads the graphics and draws the grid map.
+        // 7. LEVEL BUILDER: Dynamically spawns tiles and door objects
         private void LoadAssets()
         {
-            // Set initial character state to idle facing forward
             SetCharacterState(CharacterState.Idle, Direction.Front);
 
-            // Load the environmental tiles
-            BitmapImage floorTile = new BitmapImage(new Uri("pack://application:,,,/Assets/tile_0000.png")); 
-            BitmapImage wallTile = new BitmapImage(new Uri("pack://application:,,,/Assets/tile_0001.png")); 
+            BitmapImage floorTile = new BitmapImage(new Uri("pack://application:,,,/Assets/tile_0000.png"));
+            BitmapImage wallTile = new BitmapImage(new Uri("pack://application:,,,/Assets/tile_0001.png"));
 
-            // Loop through the array and draw the correct image for each number
+            doors.Clear();
+
             for (int row = 0; row < levelMap.GetLength(0); row++)
             {
                 for (int col = 0; col < levelMap.GetLength(1); col++)
@@ -214,13 +215,18 @@ namespace Game
                     };
 
                     if (levelMap[row, col] == 0)
+                    {
                         tile.Source = floorTile;
+                    }
                     else if (levelMap[row, col] == 1)
+                    {
                         tile.Source = wallTile;
+                    }
                     else if (levelMap[row, col] == DoorTile)
                     {
                         tile.Source = floorTile;
-                        doorVisual = new Rectangle
+
+                        Rectangle doorVisual = new Rectangle
                         {
                             Width = TileSize,
                             Height = TileSize,
@@ -228,19 +234,28 @@ namespace Game
                             Stroke = Brushes.Black,
                             StrokeThickness = 3
                         };
+
                         Panel.SetZIndex(doorVisual, -1);
-                        Canvas.SetLeft(doorVisual, col * TileSize); // Fixed formatting
-                        Canvas.SetTop(doorVisual, row * TileSize); // Fixed formatting
+                        Canvas.SetLeft(doorVisual, col * TileSize);
+                        Canvas.SetTop(doorVisual, row * TileSize);
+
+                        // Instantiate independent Door object and add to collection
+                        Door door = new Door
+                        {
+                            Row = row,
+                            Column = col,
+                            IsOpen = false,
+                            Visual = doorVisual
+                        };
+                        doors.Add(door);
+
+                        GameCanvas.Children.Add(doorVisual);
                     }
 
-                    // Push tiles behind the player
                     Panel.SetZIndex(tile, -1);
-                    Canvas.SetLeft(tile, col * TileSize); // Fixed formatting
-                    Canvas.SetTop(tile, row * TileSize); // Fixed formatting
+                    Canvas.SetLeft(tile, col * TileSize);
+                    Canvas.SetTop(tile, row * TileSize);
                     GameCanvas.Children.Add(tile);
-
-                    if (levelMap[row, col] == DoorTile)
-                        GameCanvas.Children.Add(doorVisual);
                 }
             }
 
@@ -257,13 +272,12 @@ namespace Game
             GameCanvas.Children.Add(interactionText);
         }
 
-        // 7. THE GAME LOOP: Runs 60 times a second to update positions
+        // 8. GAME LOOP
         private void GameLoop(object sender, EventArgs e)
         {
             double left = Canvas.GetLeft(Player);
             double top = Canvas.GetTop(Player);
 
-            // Track what the player is doing this specific frame
             bool isMoving = false;
             Direction newDirection = currentDirection;
 
@@ -293,13 +307,9 @@ namespace Game
                 isMoving = true;
             }
 
-            // Decide if we should be playing the Walk or Idle animation
             CharacterState newState = isMoving ? CharacterState.Walk : CharacterState.Idle;
-
-            // Send the states to the animation helper
             SetCharacterState(newState, newDirection);
 
-            // Collision Logic
             double currentLeft = Canvas.GetLeft(Player);
             double currentTop = Canvas.GetTop(Player);
 
@@ -314,6 +324,7 @@ namespace Game
             UpdateInteractionPrompt();
         }
 
+        // Dynamic Collision Handling
         private bool IsBlocked(double left, double top)
         {
             if (left < 0 || top < 0 || left + Player.Width > levelMap.GetLength(1) * TileSize ||
@@ -330,42 +341,97 @@ namespace Game
                 for (int column = firstColumn; column <= lastColumn; column++)
                 {
                     int tile = levelMap[row, column];
-                    if (tile != 0 && !(tile == DoorTile && doorOpen))
+
+                    if (tile == 1) // Wall
+                    {
                         return true;
+                    }
+                    else if (tile == DoorTile)
+                    {
+                        // Look up the door state for this specific grid cell
+                        Door door = GetDoorAt(row, column);
+                        if (door == null || !door.IsOpen)
+                        {
+                            return true; // Block player if door is closed
+                        }
+                    }
                 }
             }
 
             return false;
         }
 
-        private bool IsNearDoor()
+        // Returns the Door object located at a specific grid row and column
+        private Door GetDoorAt(int row, int col)
+        {
+            foreach (var door in doors)
+            {
+                if (door.Row == row && door.Column == col)
+                    return door;
+            }
+            return null;
+        }
+
+        // Returns the closest Door object within interaction distance
+        private Door GetNearestDoor()
         {
             double playerCenterX = Canvas.GetLeft(Player) + Player.Width / 2;
             double playerCenterY = Canvas.GetTop(Player) + Player.Height / 2;
-            double doorCenterX = doorColumn * TileSize + TileSize / 2;
-            double doorCenterY = doorRow * TileSize + TileSize / 2;
 
-            // Fixed formatting: re-added minus signs that were stripped in paste
-            return Math.Abs(playerCenterX - doorCenterX) <= TileSize * 1.5 &&
-                   Math.Abs(playerCenterY - doorCenterY) <= TileSize * 1.5;
+            Door nearestDoor = null;
+            double shortestDistance = double.MaxValue;
+
+            foreach (var door in doors)
+            {
+                double doorCenterX = door.Column * TileSize + TileSize / 2;
+                double doorCenterY = door.Row * TileSize + TileSize / 2;
+
+                double deltaX = playerCenterX - doorCenterX;
+                double deltaY = playerCenterY - doorCenterY;
+
+                if (Math.Abs(deltaX) <= TileSize * 1.5 && Math.Abs(deltaY) <= TileSize * 1.5)
+                {
+                    double distance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+                    if (distance < shortestDistance)
+                    {
+                        shortestDistance = distance;
+                        nearestDoor = door;
+                    }
+                }
+            }
+
+            return nearestDoor;
         }
 
         private void UpdateInteractionPrompt()
         {
-            interactionText.Text = doorOpen
-                ? "Door is open"
-                : IsNearDoor() ? "Press E to open the door" : string.Empty;
+            Door nearbyDoor = GetNearestDoor();
+
+            if (nearbyDoor != null)
+            {
+                interactionText.Text = nearbyDoor.IsOpen
+                    ? "Door is open"
+                    : "Press E to open the door";
+            }
+            else
+            {
+                interactionText.Text = string.Empty;
+            }
         }
 
-        // 8. INPUT HANDLERS: These catch the keyboard presses.
+        // 9. INPUT HANDLERS
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.E && !doorOpen && IsNearDoor())
+            if (e.Key == Key.E)
             {
-                doorOpen = true;
-                doorVisual.Fill = Brushes.Transparent;
-                doorVisual.Stroke = Brushes.Transparent;
-                UpdateInteractionPrompt();
+                Door doorToOpen = GetNearestDoor();
+                if (doorToOpen != null && !doorToOpen.IsOpen)
+                {
+                    doorToOpen.IsOpen = true;
+                    doorToOpen.Visual.Fill = Brushes.Transparent;
+                    doorToOpen.Visual.Stroke = Brushes.Transparent;
+                    UpdateInteractionPrompt();
+                }
             }
 
             if (e.Key == Key.A || e.Key == Key.Left) moveLeft = true;

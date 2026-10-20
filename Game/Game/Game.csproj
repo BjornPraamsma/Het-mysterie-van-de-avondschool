@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\BackWall1.png" />
+    <None Remove="Assets\BackWall2.png" />
     <None Remove="Assets\blonde_man\IdleBackBotBlondMan.png" />
     <None Remove="Assets\blonde_man\IdleBackMidBlondMan.png" />
     <None Remove="Assets\blonde_man\IdleBackTop1BlondMan.png" />
@@ -41,11 +43,17 @@
     <None Remove="Assets\blonde_man\WalkRightStand2BlondMan.png" />
     <None Remove="Assets\blonde_man\WalkRightStrideLeftBlondMan.png" />
     <None Remove="Assets\blonde_man\WalkRightStrideRightBlondMan.png" />
+    <None Remove="Assets\Floor.png" />
+    <None Remove="Assets\FrontWall.png" />
+    <None Remove="Assets\LeftWall.png" />
+    <None Remove="Assets\RightWall.png" />
     <None Remove="Assets\tile_0000.png" />
     <None Remove="Assets\tile_0001.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\BackWall1.png" />
+    <Resource Include="Assets\BackWall2.png" />
     <Resource Include="Assets\blonde_man\IdleFrontMidBlondeMan.png" />
     <Resource Include="Assets\blonde_man\IdleFrontTop1BlondeMan.png" />
     <Resource Include="Assets\blonde_man\IdleFrontTop2BlondeMan.png" />
@@ -84,6 +92,10 @@
     <Resource Include="Assets\blonde_man\WalkRightStand2BlondMan.png" />
     <Resource Include="Assets\blonde_man\WalkRightStrideLeftBlondMan.png" />
     <Resource Include="Assets\blonde_man\WalkRightStrideRightBlondMan.png" />
+    <Resource Include="Assets\Floor.png" />
+    <Resource Include="Assets\FrontWall.png" />
+    <Resource Include="Assets\LeftWall.png" />
+    <Resource Include="Assets\RightWall.png" />
     <Resource Include="Assets\tile_0000.png" />
     <Resource Include="Assets\tile_0001.png" />
   </ItemGroup>
