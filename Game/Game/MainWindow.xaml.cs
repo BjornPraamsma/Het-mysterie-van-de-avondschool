@@ -37,8 +37,8 @@ namespace Game
             _mapRenderer = new TileMapRenderer(GameCanvas);
             _quizManager = new QuizManager(QuizOverlay, QuizQuestionText, QuizAnswerInput, QuizFeedbackText);
 
-            _playerX = 7 * GameConfig.TileSize;
-            _playerY = 6 * GameConfig.TileSize;
+            _playerX = 15 * GameConfig.TileSize;
+            _playerY = 15 * GameConfig.TileSize;
 
             InitializePlayer();
             _mapRenderer.Render(_currentMap, _playerImage);

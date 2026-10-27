@@ -50,6 +50,8 @@
     <None Remove="Assets\LeftWall.png" />
     <None Remove="Assets\menu.png" />
     <None Remove="Assets\RightWall.png" />
+    <None Remove="Assets\StairsDown.png" />
+    <None Remove="Assets\StairsUp.png" />
     <None Remove="Assets\tile_0000.png" />
     <None Remove="Assets\tile_0001.png" />
     <None Remove="Assets\Void.png" />
@@ -103,6 +105,8 @@
     <Resource Include="Assets\LeftWall.png" />
     <Resource Include="Assets\menu.png" />
     <Resource Include="Assets\RightWall.png" />
+    <Resource Include="Assets\StairsDown.png" />
+    <Resource Include="Assets\StairsUp.png" />
     <Resource Include="Assets\Void.png" />
   </ItemGroup>
 
