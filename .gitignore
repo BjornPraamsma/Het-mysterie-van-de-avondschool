@@ -4,3 +4,5 @@
 
 /.vs
 /Game/.vs/Game.slnx
+[Bb]in/
+[Oo]bj/
