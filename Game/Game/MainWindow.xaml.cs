@@ -6,6 +6,7 @@ using System.Windows.Media;
 using Game.Config;
 using Game.Models;
 using Game.Services;
+using System.Collections.Generic;
 
 namespace Game
 {
@@ -29,6 +30,45 @@ namespace Game
         private int _animationFrame;
         private DateTime _lastAnimTime = DateTime.Now;
         private readonly Image _playerImage = new();
+
+        // ==========================================
+        // BOEKENKASTEN
+        // ==========================================
+
+        private readonly Dictionary<int, BookcaseData> _bookcases = new()
+        {
+            [20] = new BookcaseData
+            {
+                TileId = 20,
+                Titel = "De Wiskundekast",
+                Beschrijving = "Je vindt een oud rekenboek.",
+                Vraag = "Wat is 7 × 8?",
+                Antwoord = "56",
+                Aanwijzing = "De eerste aanwijzing is gevonden!"
+            },
+
+            [21] = new BookcaseData
+            {
+                TileId = 21,
+                Titel = "De Geheime Kast",
+                Beschrijving = "Je ontdekt een geheimzinnig briefje.",
+                Vraag = "Wat is de hoofdstad van Frankrijk?",
+                Antwoord = "Parijs",
+                Aanwijzing = "Je vindt een tweede aanwijzing!"
+            },
+
+            [22] = new BookcaseData
+            {
+                TileId = 22,
+                Titel = "De Geschiedeniskast",
+                Beschrijving = "Er ligt een stoffig geschiedenisboek.",
+                Vraag = "In welk jaar begon de Tweede Wereldoorlog?",
+                Antwoord = "1939",
+                Aanwijzing = "Je hebt de derde aanwijzing gevonden!"
+            }
+        };
+
+        private bool _bookcaseOpen = false;
 
         public MainWindow()
         {
@@ -172,7 +212,21 @@ namespace Game
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!_isGameStarted || _quizManager.IsQuizActive) return;
+            // Geen interactie tijdens menu of quiz
+            if (!_isGameStarted ||
+                _quizManager.IsQuizActive ||
+                _bookcaseOpen)
+                return;
+
+            // E-toets voor boekenkasten
+            if (e.Key == Key.E)
+            {
+                InteractWithBookcase();
+                e.Handled = true;
+                return;
+            }
+
+            // Normale beweging
             SetMovementState(e.Key, true);
         }
 
@@ -188,5 +242,171 @@ namespace Game
             if (key == Key.A || key == Key.Left) _moveLeft = state;
             if (key == Key.D || key == Key.Right) _moveRight = state;
         }
+
+        private void InteractWithBookcase()
+
+        {
+            double tileSize = GameConfig.TileSize;
+
+            // Bepaal op welke tegel de speler staat
+            int playerCol = (int)((_playerX + tileSize / 2) / tileSize);
+            int playerRow = (int)((_playerY + tileSize / 2) / tileSize);
+
+            // Controleer de tegels rondom de speler
+            (int row, int col)[] positions =
+            {
+        (playerRow, playerCol),
+        (playerRow - 1, playerCol),
+        (playerRow + 1, playerCol),
+        (playerRow, playerCol - 1),
+        (playerRow, playerCol + 1)
+
+    };
+
+
+            foreach (var position in positions)
+            {
+                int row = position.row;
+                int col = position.col;
+
+                // Controleer of de positie binnen de map valt
+                if (row < 0 || col < 0 ||
+                    row >= _currentMap.Height ||
+                    col >= _currentMap.Width)
+                    continue;
+
+                int tileId = _currentMap.Layout[row, col];
+
+                // Kijk of dit een boekenkast is
+                if (_bookcases.TryGetValue(tileId, out var bookcase))
+                {
+                    OpenBookcase(bookcase);
+                    return;
+                }
+            }
+        }
+
+        private void OpenBookcase(BookcaseData bookcase)
+        {
+            _bookcaseOpen = true;
+
+            // Stop de speler
+            _moveUp = false;
+            _moveDown = false;
+            _moveLeft = false;
+            _moveRight = false;
+
+            if (bookcase.IsOpgelost)
+            {
+                MessageBox.Show(
+                    bookcase.Aanwijzing,
+                    bookcase.Titel);
+
+                _bookcaseOpen = false;
+                GameCanvas.Focus();
+                return;
+            }
+
+            // Maak het puzzelvenster
+            Window popup = new Window
+            {
+                Title = bookcase.Titel,
+                Width = 400,
+                Height = 310,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Owner = this,
+                ResizeMode = ResizeMode.NoResize,
+                Background = new SolidColorBrush(
+                    Color.FromRgb(43, 43, 59))
+            };
+
+            StackPanel panel = new StackPanel
+            {
+                Margin = new Thickness(25)
+            };
+
+            TextBlock title = new TextBlock
+            {
+                Text = bookcase.Titel,
+                FontSize = 22,
+                FontWeight = FontWeights.Bold,
+                Foreground = Brushes.Gold,
+                Margin = new Thickness(0, 0, 0, 15)
+            };
+
+            TextBlock description = new TextBlock
+            {
+                Text = bookcase.Beschrijving,
+                Foreground = Brushes.White,
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 0, 0, 12)
+            };
+
+            TextBlock question = new TextBlock
+            {
+                Text = bookcase.Vraag,
+                Foreground = Brushes.White,
+                FontSize = 16,
+                Margin = new Thickness(0, 0, 0, 12)
+            };
+
+            TextBox answer = new TextBox
+            {
+                Height = 32,
+                FontSize = 16
+            };
+
+            Button submit = new Button
+            {
+                Content = "Controleren",
+                Height = 35,
+                Margin = new Thickness(0, 15, 0, 0),
+                Background = Brushes.ForestGreen,
+                Foreground = Brushes.White
+            };
+
+            submit.Click += (sender, e) =>
+            {
+                if (answer.Text.Trim().Equals(
+                    bookcase.Antwoord,
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    bookcase.IsOpgelost = true;
+
+                    MessageBox.Show(
+                        bookcase.Aanwijzing,
+                        "Goed antwoord!");
+
+                    popup.Close();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Helaas, probeer het opnieuw!",
+                        "Fout antwoord");
+                }
+            };
+
+            panel.Children.Add(title);
+            panel.Children.Add(description);
+            panel.Children.Add(question);
+            panel.Children.Add(answer);
+            panel.Children.Add(submit);
+
+            popup.Content = panel;
+
+            try
+            {
+                popup.ShowDialog();
+            }
+            finally
+            {
+                _bookcaseOpen = false;
+                GameCanvas.Focus();
+            }
+        }
+
+
     }
+
 }

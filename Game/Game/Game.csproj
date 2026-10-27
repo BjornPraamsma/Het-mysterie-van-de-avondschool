@@ -43,6 +43,7 @@
     <None Remove="Assets\blonde_man\WalkRightStand2BlondMan.png" />
     <None Remove="Assets\blonde_man\WalkRightStrideLeftBlondMan.png" />
     <None Remove="Assets\blonde_man\WalkRightStrideRightBlondMan.png" />
+    <None Remove="Assets\Bookshelf.png" />
     <None Remove="Assets\Door.png" />
     <None Remove="Assets\Floor.png" />
     <None Remove="Assets\Font\PressStart2P-Regular.ttf" />
@@ -96,6 +97,9 @@
     <Resource Include="Assets\blonde_man\WalkRightStand2BlondMan.png" />
     <Resource Include="Assets\blonde_man\WalkRightStrideLeftBlondMan.png" />
     <Resource Include="Assets\blonde_man\WalkRightStrideRightBlondMan.png" />
+    <Resource Include="Assets\Bookshelf.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Door.png" />
     <Resource Include="Assets\Floor.png" />
     <Resource Include="Assets\Font\PressStart2P-Regular.ttf" />
@@ -104,10 +108,6 @@
     <Resource Include="Assets\menu.png" />
     <Resource Include="Assets\RightWall.png" />
     <Resource Include="Assets\Void.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

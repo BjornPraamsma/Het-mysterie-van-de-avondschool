@@ -4,3 +4,6 @@
 
 /.vs
 /Game/.vs/Game.slnx
+**/bin/
+**/obj/
+.vs/

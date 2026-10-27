@@ -42,7 +42,12 @@ namespace Game.Models
                 { 6, new TileType { Id = 6, AssetName = "Door.png", IsSolid = true } },
                 { 7, new TileType { Id = 7, AssetName = "Door.png", IsSolid = true } },
                 { 8, new TileType { Id = 8, AssetName = "Door.png", IsSolid = true } },
-                
+
+                // Interactieve boekenkast
+                { 20, new TileType { Id = 20, AssetName = "Bookshelf.png", IsSolid = true } },
+                { 21, new TileType { Id = 21, AssetName = "Bookshelf.png", IsSolid = true } },
+                { 22, new TileType { Id = 22, AssetName = "Bookshelf.png", IsSolid = true } },
+
                 // Opvulling voor ruimtes 'buiten' de map (maak hiervoor een compleet zwart plaatje, of gebruik FrontWall.png)
                 { 99, new TileType { Id = 99, AssetName = "Void.png", IsSolid = true } }, 
                 
@@ -55,7 +60,7 @@ namespace Game.Models
             {
                 // Lokaal 1 (Links)       Lokaal 2 (Midden)       Lokaal 3 (Rechts)       Dode Ruimte
                 { 3, 3, 3, 4, 4, 3, 3,    3, 3, 3, 3, 4, 3, 3,    3, 3, 4, 4, 3, 3, 3,    99,99,99,99, 99}, // 0
-                { 1, 0, 0, 0, 0, 0, 2,    1, 0, 0, 0, 0, 0, 2,    1, 0, 0, 0, 0, 0, 2,    99,99,99,99, 99}, // 1
+                { 1, 0, 0, 20, 0, 0, 2,   1, 0, 0, 21, 0, 0, 2,  1, 0, 0, 22, 0, 0, 2,    99,99,99,99, 99}, // 1
                 { 1, 0, 0, 0, 0, 0, 2,    1, 0, 0, 0, 0, 0, 2,    1, 0, 0, 0, 0, 0, 2,    99,99,99,99, 99}, // 2
                 { 1, 0, 0, 0, 0, 0, 2,    1, 0, 0, 0, 0, 0, 2,    1, 0, 0, 0, 0, 0, 2,    99,99,99,99, 99}, // 3
                 { 3, 3, 3, 6, 3, 3, 3,    3, 3, 7, 3, 3, 3, 3,    3, 3, 8, 3, 3, 3, 3,    3, 4, 3, 3,  3}, // 4 (Deuren naar de gang)
