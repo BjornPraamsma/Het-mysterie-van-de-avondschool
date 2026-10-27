@@ -42,6 +42,8 @@ namespace Game
 
             InitializePlayer();
             _mapRenderer.Render(_currentMap, _playerImage);
+            GameCanvas.Width = 2500;
+            GameCanvas.Height = 2500;
 
             CompositionTarget.Rendering += OnRenderFrame;
         }
@@ -92,11 +94,43 @@ namespace Game
             UpdateMovement();
             UpdateAnimation();
 
-            double scrollX = _playerX - (GameScrollViewer.ActualWidth / 2) + (GameConfig.TileSize / 2);
-            double scrollY = _playerY - (GameScrollViewer.ActualHeight / 2) + (GameConfig.TileSize / 2);
+            // 1. Bepaal de marges (bijv. 250 pixels vanaf de randen)
+            double marginX = 250;
+            double marginY = 200;
 
-            GameScrollViewer.ScrollToHorizontalOffset(scrollX);
-            GameScrollViewer.ScrollToVerticalOffset(scrollY);
+            // 2. Haal de huidige scroll-posities op
+            double currentScrollX = GameScrollViewer.HorizontalOffset;
+            double currentScrollY = GameScrollViewer.VerticalOffset;
+
+            // 3. Bereken de positie van de speler op het scherm (relatief tot de scrollviewer)
+            double playerScreenX = _playerX - currentScrollX;
+            double playerScreenY = _playerY - currentScrollY;
+
+            double newScrollX = currentScrollX;
+            double newScrollY = currentScrollY;
+
+            // 4. Controleer of de speler de marges raakt en pas de scroll aan
+            if (playerScreenX > GameScrollViewer.ActualWidth - marginX)
+            {
+                newScrollX = _playerX - (GameScrollViewer.ActualWidth - marginX);
+            }
+            else if (playerScreenX < marginX)
+            {
+                newScrollX = _playerX - marginX;
+            }
+
+            if (playerScreenY > GameScrollViewer.ActualHeight - marginY)
+            {
+                newScrollY = _playerY - (GameScrollViewer.ActualHeight - marginY);
+            }
+            else if (playerScreenY < marginY)
+            {
+                newScrollY = _playerY - marginY;
+            }
+
+            // 5. Pas de nieuwe offset toe
+            GameScrollViewer.ScrollToHorizontalOffset(newScrollX);
+            GameScrollViewer.ScrollToVerticalOffset(newScrollY);
         }
 
         private void UpdateMovement()
