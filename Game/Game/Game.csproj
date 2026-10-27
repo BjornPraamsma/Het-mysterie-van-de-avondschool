@@ -54,6 +54,17 @@
     <None Remove="Assets\tile_0000.png" />
     <None Remove="Assets\tile_0001.png" />
     <None Remove="Assets\Void.png" />
+    <None Remove="audio\chase.mp3" />
+    <None Remove="audio\Jumpscare.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="audio\chase.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="audio\Jumpscare.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
